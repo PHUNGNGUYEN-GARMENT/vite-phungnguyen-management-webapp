@@ -17,7 +17,8 @@ const Main = () => {
         <SideNav collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout
           className={cn('duration-300', {
-            'ml-[200px]': !collapsed
+            'ml-[250px]': !collapsed,
+            'ml-[80px]': collapsed
           })}
         >
           <Header collapsed={collapsed} setCollapsed={setCollapsed} className='p-0' />
