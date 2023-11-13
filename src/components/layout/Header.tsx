@@ -10,8 +10,8 @@
   * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { Button } from 'antd'
-import { AlignJustify, AlignLeft } from 'lucide-react'
+import { Button, Input, Space } from 'antd'
+import { AlignJustify, AlignLeft, Search } from 'lucide-react'
 import React, { forwardRef } from 'react'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
@@ -21,18 +21,19 @@ interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 
 const Header = forwardRef<HTMLElement, HeaderProps>(({ collapsed, setCollapsed }) => {
   return (
-    <>
+    <Space direction='horizontal' className='h-14 bg-white'>
       <Button
         type='text'
         icon={collapsed ? <AlignLeft /> : <AlignJustify />}
         onClick={() => setCollapsed(!collapsed)}
         style={{
           fontSize: '16px',
-          width: 64,
-          height: 64
+          width: 24,
+          height: 24
         }}
       />
-    </>
+      <Input className='border-none bg-[#f9fafb]' size='large' placeholder='Type here...' prefix={<Search />} />
+    </Space>
   )
 })
 
