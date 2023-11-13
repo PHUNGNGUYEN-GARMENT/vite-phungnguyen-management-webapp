@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,mdx}'],
+module.exports = {
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     container: {
+      center: true,
       screens: {
         '2xl': '1440px'
       }
@@ -10,7 +12,6 @@ export default {
     extend: {
       colors: {
         background: 'var(--background)',
-        base: 'var(--base)',
         foreground: 'var(--foreground)',
         border: 'var(--border)',
         input: 'var(--input)',
@@ -29,14 +30,10 @@ export default {
           DEFAULT: 'var(--destructive)',
           foreground: 'var(--destructive-foreground)'
         },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)'
-        },
-        accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)'
-        },
+        muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted-foreground)',
+        accent: 'var(--accent)',
+        'accent-foreground': 'var(--accent-foreground)',
         popover: {
           DEFAULT: 'var(--popover)',
           foreground: 'var(--popover-foreground)'
@@ -70,5 +67,6 @@ export default {
       }
     }
   },
-  plugins: []
+  // eslint-disable-next-line no-undef
+  plugins: [require('tailwindcss-animate')]
 }

@@ -1,9 +1,6 @@
 // import { useState } from "react";
-import { Menu } from 'antd'
-import Sider from 'antd/es/layout/Sider'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '~/assets/logo.svg'
 import routes from '~/constants/route'
 import { cn } from '~/lib/cn'
 
@@ -25,51 +22,29 @@ const SideNav = ({ collapsed, setCollapsed }: SideNavProps) => {
   }
 
   return (
-    <Sider
-      breakpoint='lg'
-      width={250}
-      onBreakpoint={setCollapsed}
-      trigger={null}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type)
-      }}
-      collapsible
-      collapsed={collapsed}
-      style={{
-        position: 'fixed',
-        left: 0,
-        bottom: 0,
-        top: 0,
-        overflow: 'auto',
-        background: '#f9fafb'
-      }}
-      className='shadow-sm'
-    >
-      <div className='flex justify-center m-5'>
-        <img src={logo} alt='logo' className='object-contain h-14 w-auto' />
-      </div>
-      <Menu mode='inline' defaultSelectedKeys={[`${getKeyFromPath(pathname)}`]}>
+    <aside className='fixed bottom-0 left-0 top-0 h-screen w-[200px] overflow-auto bg-yellow-200'>
+      <div className='' />
+      <ul className='flex h-full w-full flex-col'>
         {routes.map((route) => {
           return (
-            <Menu.Item
-              key={route.key}
-              icon={<route.icon />}
-              style={{
-                borderRadius: '0px'
-              }}
-              className={cn('select-none font-semibold', {
-                'before:bg-[#f07c00] before:h-full before:left-0 before:w-1 before:absolute before:rounded-tr-full before:rounded-br-full':
-                  getKeyFromPath(pathname) === route.key
-              })}
-            >
-              <Link className='transition-none' to={route.path}>
-                {route.name}
+            <li key={route.key} className={cn('h-14 text-foreground hover:bg-background', {})}>
+              <Link to={route.path} className='flex h-full w-full flex-row items-center justify-start gap-2'>
+                <span>
+                  <route.icon />
+                </span>
+                <span
+                  className={cn({
+                    hidden: collapsed
+                  })}
+                >
+                  {route.name}
+                </span>
               </Link>
-            </Menu.Item>
+            </li>
           )
         })}
-      </Menu>
-    </Sider>
+      </ul>
+    </aside>
   )
 }
 export default SideNav
