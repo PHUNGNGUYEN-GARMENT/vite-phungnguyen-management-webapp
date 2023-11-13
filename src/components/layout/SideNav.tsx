@@ -13,9 +13,18 @@ interface SideNavProps extends React.HTMLAttributes<HTMLElement> {
 const SideNav = ({ collapsed, setCollapsed }: SideNavProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { pathname } = useLocation()
+
+  const getKeyFromPath = (path: string): number => {
+    const route = routes.find((route) => route.path === path)
+    if (route) {
+      return route.key
+    }
+    return -1
+  }
+
   return (
     <Sider
-      breakpoint='lg'
+      // breakpoint='lg'
       collapsedWidth='0'
       onBreakpoint={setCollapsed}
       trigger={null}
@@ -30,14 +39,20 @@ const SideNav = ({ collapsed, setCollapsed }: SideNavProps) => {
         bottom: 0,
         top: 0,
         overflow: 'auto',
-        background: '#fff'
+        background: '#ffffff'
       }}
+      className='shadow-sm'
     >
       <div className='' />
-      <Menu mode='inline' defaultSelectedKeys={['4']}>
-        {routes.map((route, index) => {
+      <Menu mode='inline' className='' defaultSelectedKeys={[`${getKeyFromPath(pathname)}`]}>
+        {routes.map((route) => {
           return (
-            <Menu.Item key={index} icon={<route.icon />}>
+            <Menu.Item
+              key={route.key}
+              icon={<route.icon />}
+              className='before:bg-black before:bottom-0 before:left-0 before:top-0
+             before:w-1 before:absolute rounded-full'
+            >
               <Link to={route.path}>{route.name}</Link>
             </Menu.Item>
           )
