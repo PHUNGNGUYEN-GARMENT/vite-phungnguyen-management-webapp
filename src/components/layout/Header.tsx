@@ -1,27 +1,10 @@
-import { Button } from 'antd'
-import { MenuIcon } from 'lucide-react'
 import React from 'react'
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-  collapsed: boolean
-  setCollapsed: (value: boolean) => void
-}
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
-const Header = ({ collapsed, setCollapsed }: HeaderProps) => {
-  return (
-    <header className='bg-blue-400'>
-      <Button
-        type='text'
-        icon={collapsed ? <MenuIcon /> : <MenuIcon />}
-        onClick={() => setCollapsed(!collapsed)}
-        style={{
-          fontSize: '16px',
-          width: 64,
-          height: 64
-        }}
-      />
-    </header>
-  )
+// eslint-disable-next-line no-empty-pattern
+const Header = ({}: HeaderProps) => {
+  return <header className='h-[72px] bg-blue-400'></header>
 }
 
 export default Header

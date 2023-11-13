@@ -1,19 +1,15 @@
-import { useState } from 'react'
-
 import { Button } from 'antd'
 import React from 'react'
+import Footer from './Footer'
 import Header from './Header'
 import SideNav from './SideNav'
-import Footer from './Footer'
 
 const Main: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false)
-
   return (
     <div className='bg-background'>
-      <SideNav collapsed={collapsed} setCollapsed={setCollapsed} />
-      <div className='ml-[200px]'>
-        <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+      <SideNav />
+      <div className='ml-[72px] lg:ml-[250px]'>
+        <Header />
         <main className='bg-orange-500'>
           <div style={{ padding: 24, textAlign: 'center' }}>
             <p>long content</p>
