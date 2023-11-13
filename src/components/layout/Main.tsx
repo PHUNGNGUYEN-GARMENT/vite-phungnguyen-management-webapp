@@ -1,6 +1,9 @@
 import { Layout } from 'antd'
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import { cn } from '~/lib/cn'
+import Header from './Header'
+import SideNav from './SideNav'
 
 const { Footer, Content } = Layout
 
@@ -9,15 +12,14 @@ const Main = () => {
 
   return (
     <Layout hasSider>
-      {/* <SideNav collapsed={collapsed} /> */}
+      <SideNav collapsed={collapsed} setCollapsed={setCollapsed} />
       <Layout
         className={cn('duration-300', {
-          'ml-[80px]': collapsed,
           'ml-[200px]': !collapsed
         })}
       >
-        {/* <Header collapsed={collapsed} setCollapsed={setCollapsed} style={{ padding: 0 }} /> */}
-        <Content style={{ overflow: 'initial' }}></Content>
+        <Header collapsed={collapsed} setCollapsed={setCollapsed} className='p-0' />
+        <Content className='min-h-screen'>{<Outlet />}</Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
       </Layout>
     </Layout>

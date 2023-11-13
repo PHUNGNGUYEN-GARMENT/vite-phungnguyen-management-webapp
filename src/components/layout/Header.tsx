@@ -10,8 +10,8 @@
   * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
+import { AlignJustify, AlignLeft } from 'lucide-react'
 import React, { forwardRef } from 'react'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
@@ -24,7 +24,7 @@ const Header = forwardRef<HTMLElement, HeaderProps>(({ collapsed, setCollapsed }
     <>
       <Button
         type='text'
-        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        icon={collapsed ? <AlignLeft /> : <AlignJustify />}
         onClick={() => setCollapsed(!collapsed)}
         style={{
           fontSize: '16px',

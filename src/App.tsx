@@ -1,8 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import Calendar from './pages/Calendar'
-import Dashboard from './pages/Dashboard'
-import Ecommerce from './pages/Ecommerce'
-import Mail from './pages/Mail'
+import Main from './components/layout/Main'
+import routes from './constants/route'
 import SignIn from './pages/auth/SignIn'
 import SignUp from './pages/auth/SignUp'
 
@@ -12,10 +10,11 @@ function App() {
       <Routes>
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/sign-in' element={<SignIn />} />
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/e-commerce' element={<Ecommerce />} />
-        <Route path='/calendar' element={<Calendar />} />
-        <Route path='/mail' element={<Mail />} />
+        <Route element={<Main />}>
+          {routes.map((route, index) => {
+            return <Route key={index} path={route.path} element={<route.component />} />
+          })}
+        </Route>
       </Routes>
     </div>
   )
