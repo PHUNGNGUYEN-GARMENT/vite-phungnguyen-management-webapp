@@ -13,7 +13,7 @@ const SideNav = ({}: SideNavProps) => {
   const { pathname } = useLocation()
 
   return (
-    <aside className='fixed left-0 top-0 flex min-h-screen w-[72px] flex-col gap-2 overflow-auto bg-card lg:w-[250px]'>
+    <aside className='fixed left-0 top-0 flex min-h-screen w-[72px] flex-col gap-2 overflow-auto bg-white lg:w-[250px]'>
       <div className='relative flex justify-center py-5'>
         <img src={logo} alt='logo' className='h-10 w-10 object-contain lg:h-20 lg:w-20' />
       </div>
