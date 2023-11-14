@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '~/assets/logo.svg'
 import routes from '~/constants/route'
-import { cn } from '~/lib/cn'
+import { cn } from '~/lib/utils'
 
 interface SideNavProps extends React.HTMLAttributes<HTMLElement> {}
 
