@@ -19,6 +19,7 @@ const SideNav = ({}: SideNavProps) => {
       </div>
       <ul dir='ltr' tabIndex={0} className='relative flex h-full w-full flex-col' data-menu-list={true} role='menu'>
         {routes.map((route) => {
+          const isActive = pathname === route.path
           return (
             <li key={route.key} className='relative' tabIndex={route.key} role='menuitem'>
               <Link
@@ -27,21 +28,21 @@ const SideNav = ({}: SideNavProps) => {
                   'flex h-12 w-full flex-row items-center justify-start gap-2 px-4 py-3 font-semibold text-accent-foreground hover:bg-accent',
                   {
                     'bg-accent text-accent-foreground before:absolute before:left-0 before:h-full before:w-1 before:rounded-br-full before:rounded-tr-full before:bg-primary':
-                      pathname === route.path
+                      isActive
                   }
                 )}
               >
-                <span role='img'>
-                  <route.icon
-                    size={20}
-                    className={cn('relative left-[10px] lg:left-0', {
-                      'text-muted': pathname !== route.path
-                    })}
-                  />
+                <span
+                  role='img'
+                  className={cn('relative left-1 rounded-md bg-secondary p-2 text-white lg:left-0', {
+                    'bg-primary text-white': isActive
+                  })}
+                >
+                  <route.icon size={20} className={cn('text-white')} />
                 </span>
                 <span
                   className={cn('hidden lg:flex', {
-                    '': pathname === route.path
+                    '': isActive
                   })}
                 >
                   {route.name}

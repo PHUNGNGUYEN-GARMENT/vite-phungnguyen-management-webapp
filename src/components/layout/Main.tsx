@@ -10,7 +10,7 @@ const Main: React.FC = () => {
       <SideNav />
       <div className='ml-[72px] lg:ml-[250px]'>
         <Header />
-        <main className='bg-orange-500'>
+        <main className=''>
           <div style={{ padding: 24, textAlign: 'center' }}>
             <p>long content</p>
             <Button type='text'>Hello</Button>
