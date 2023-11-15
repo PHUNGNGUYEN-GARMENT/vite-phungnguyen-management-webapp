@@ -1,7 +1,8 @@
-import { Avatar, Badge, Button } from 'antd'
-import { BellRing, Menu } from 'lucide-react'
-import React from 'react'
+import { Avatar, Badge, Button, Modal, Space } from 'antd'
+import { BellRing, ChevronDown, Menu } from 'lucide-react'
+import React, { useState } from 'react'
 import SearchInput from '../search/SearchInput'
+import UserDialog from '../user/user-dialog'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   collapsed: boolean
@@ -11,25 +12,58 @@ interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 // eslint-disable-next-line no-empty-pattern
 const Header = ({ onMenuClick }: HeaderProps) => {
   const url = 'https://www.elle.vn/wp-content/uploads/2014/07/08/Justin-Bieber-0.jpg'
+  const [openUserInfo, setOpenUserInfo] = useState(false)
 
   return (
     <>
-      <div className='flex h-[56px] flex-row items-center justify-between gap-5 bg-card px-2'>
-        <div className='flex flex-row items-center justify-start gap-2'>
-          <Button type='default' className='flex-shrink-0' icon={<Menu size={20} />} onClick={onMenuClick} />
+      <div className='flex h-[56px] flex-row items-center justify-between gap-5 bg-card px-5'>
+        <div className='flex flex-row items-center justify-start gap-5'>
+          <button className='flex-shrink-0' onClick={onMenuClick}>
+            <Menu size={20} />
+          </button>
           <SearchInput />
         </div>
         <div className='relative flex h-full w-fit flex-row items-center justify-center gap-5'>
-          <Badge count={3}>
-            <Button type='default' className='rounded-full px-2 py-2'>
+          <Button type='default' className='flex items-center justify-center' shape='circle'>
+            <Badge size='small' count={3}>
               <BellRing size={16} />
-            </Button>
-          </Badge>
-          <Button className='relative m-0 flex h-fit w-fit items-center justify-center rounded-full p-0' type='default'>
-            <Avatar size='large' className='' src={<img src={url} alt='avatar' />} />
+            </Badge>
           </Button>
+          <Space className=''>
+            <Button onClick={() => setOpenUserInfo(true)} className='m-0 h-fit w-fit p-0' shape='circle' type='default'>
+              <span role='img'>
+                <Avatar size='large' src={<img src={url} alt='avatar' />} />
+              </span>
+            </Button>
+            <button className='hidden md:flex' onClick={() => setOpenUserInfo(true)}>
+              <Space size='small'>
+                <span>
+                  <p>Justin Bieber</p>
+                </span>
+                <span>
+                  <ChevronDown />
+                </span>
+              </Space>
+            </button>
+          </Space>
         </div>
       </div>
+      <Modal
+        open={openUserInfo}
+        onOk={() => setOpenUserInfo(false)}
+        onCancel={() => setOpenUserInfo(false)}
+        cancelButtonProps={{ hidden: true }}
+        okButtonProps={{ hidden: true }}
+      >
+        <UserDialog
+          avatar={url}
+          firstName={'Justin'}
+          lastName={'Bieber'}
+          email={'huuhau.hh47@gmail.com'}
+          position={'IT'}
+          gender={false}
+        />
+      </Modal>
     </>
   )
 }

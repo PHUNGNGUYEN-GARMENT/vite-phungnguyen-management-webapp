@@ -3,7 +3,13 @@ import type { ThemeConfig } from 'antd'
 
 const themeConfig: ThemeConfig = {
   token: {},
-  components: {}
+  components: {
+    Layout: {
+      siderBg: '#ffffff',
+      colorBgContainer: '#ffffff',
+      colorBgLayout: '#ffffff'
+    }
+  }
 }
 
 export default themeConfig

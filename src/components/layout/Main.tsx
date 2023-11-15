@@ -39,6 +39,7 @@ const Main: React.FC = () => {
         </Drawer>
         <Sider
           breakpoint='lg'
+          collapsedWidth={0}
           onBreakpoint={(state) => {
             setBreakpoint(state)
             setCollapsed(state)
