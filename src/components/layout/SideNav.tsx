@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { Menu, MenuProps } from 'antd'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 // import { useLocation } from 'react-router-dom'
 import logo from '~/assets/logo.svg'
 import routes from '~/constants/route'
@@ -60,10 +60,14 @@ const items: MenuItem[] = routes.map((route) => {
 // eslint-disable-next-line no-empty-pattern
 const SideNav = ({ keys, setKeys }: SideNavProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const { pathname } = useLocation()
+  const { pathname } = useLocation()
   // const {
   //   token: { colorBgContainer }
   // } = theme.useToken()
+
+  // useEffect(() => {
+  //   console.log(keys)
+  // }, [keys])
 
   return (
     <div className={cn('bg-white')}>
@@ -84,10 +88,10 @@ const SideNav = ({ keys, setKeys }: SideNavProps) => {
       </Menu> */}
       <Menu
         mode='inline'
-        defaultSelectedKeys={keys}
-        defaultOpenKeys={keys}
-        selectedKeys={keys}
-        onSelect={(selectedKeys) => setKeys(selectedKeys.selectedKeys)}
+        defaultSelectedKeys={['2']}
+        defaultOpenKeys={['sub1']}
+        // defaultSelectedKeys={keys}
+        onSelect={(info) => setKeys(info.selectedKeys)}
         style={{ height: '100%', borderRight: 0 }}
         items={items}
       />

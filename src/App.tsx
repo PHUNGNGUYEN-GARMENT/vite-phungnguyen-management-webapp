@@ -11,12 +11,12 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route element={<Main />}>
-          {routes.map((route, index) => {
+          {routes.map((route) => {
             return (
-              <Route key={index} path={route.path} element={<route.component />}>
+              <Route key={route.key} path={route.path} element={<route.component />}>
                 {route.childs
                   ? route.childs.map((child) => {
-                      return <Route key={index} path={child.path} element={<child.component />} />
+                      return <Route key={child.key} path={child.path} element={<child.component />} />
                     })
                   : null}
               </Route>

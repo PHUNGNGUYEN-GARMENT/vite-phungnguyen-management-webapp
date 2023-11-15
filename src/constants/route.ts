@@ -20,67 +20,67 @@ import EmbroideredDelivery from '~/pages/EmbroideredDelivery'
 import Group from '~/pages/Group'
 import Importation from '~/pages/Imnportation'
 import Notion from '~/pages/Notion'
-import PrintIn from '~/pages/Printin'
+import PrintIn from '~/pages/PrintIn'
 import ProductList from '~/pages/ProductList'
 import Sewing from '~/pages/Sewing'
 
 const routes = [
-  { key: 0, path: '', name: 'Tổng quan', component: Dashboard, icon: LayoutDashboard },
+  { key: '0', path: 'dashboard', name: 'Tổng quan', component: Dashboard, icon: LayoutDashboard },
   {
-    key: 1,
-    path: '',
+    key: 'sub1',
+    path: 'product',
     name: 'Thông tin mã hàng',
     component: Outlet,
     icon: PackageSearch,
     childs: [
       {
-        key: 2,
-        path: 'product-list',
+        key: '1',
+        path: '/product/product-list',
         name: 'Danh sách mã hàng',
         component: ProductList,
         icon: ClipboardList
       },
       {
-        key: 3,
-        path: 'importation',
+        key: '2',
+        path: '/product/importation',
         name: 'Nhập khẩu',
         component: Importation,
         icon: Import
       },
       {
-        key: 4,
-        path: 'sewings',
+        key: '3',
+        path: '/product/sewings',
         name: 'May mẫu',
         component: Sewing,
         icon: Aperture
       },
       {
-        key: 5,
-        path: 'accessories',
+        key: '4',
+        path: '/product/accessories',
         name: 'Phụ liệu',
         component: Accessory,
         icon: PersonStanding
       },
       {
-        key: 6,
-        path: 'cutting',
+        key: '5',
+        path: '/product/cutting',
         name: 'Tổ cắt',
         component: CuttingGroup,
         icon: Scissors
       },
       {
-        key: 7,
-        path: 'embroidered-delivery',
+        key: '6',
+        path: '/product/embroidered-delivery',
         name: 'Chuyền may',
         component: EmbroideredDelivery,
         icon: Import
       }
     ]
   },
-  { key: 8, path: 'colors', name: 'Danh sách màu', component: Color, icon: Palette },
-  { key: 9, path: 'groups', name: 'Danh sách nhóm', component: Group, icon: GroupIcon },
-  { key: 10, path: 'print-in', name: 'Danh sách in - thêu', component: PrintIn, icon: Printer },
-  { key: 11, path: 'notion', name: 'Ghi chú phụ liệu', component: Notion, icon: StickyNote }
+  { key: '7', path: 'colors', name: 'Màu', component: Color, icon: Palette },
+  { key: '8', path: 'groups', name: 'Nhóm', component: Group, icon: GroupIcon },
+  { key: '9', path: 'print-in', name: 'In - Thêu', component: PrintIn, icon: Printer },
+  { key: '10', path: 'notion', name: 'Ghi chú phụ liệu', component: Notion, icon: StickyNote }
 ]
 
 export default routes

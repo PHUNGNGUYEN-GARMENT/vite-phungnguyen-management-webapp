@@ -323,7 +323,7 @@ export const colors: IColor[] = [
 ]
 
 // Product colors
-export const productcolors: IProductColor[] = [
+export const productColors: IProductColor[] = [
   {
     colorID: 0,
     productID: 0,

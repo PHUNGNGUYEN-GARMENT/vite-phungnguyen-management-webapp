@@ -54,9 +54,9 @@ function SearchInput({}: SearchInputProps) {
           />
           <div>
             <ul className='flex flex-col' dir='ltr'>
-              {routes.map((item, index) => {
+              {routes.map((item) => {
                 return (
-                  <li key={index}>
+                  <li key={item.key}>
                     <SearchItem title={item.name} />
                   </li>
                 )

@@ -1,9 +1,8 @@
-import { Tag, Typography } from 'antd'
-import Table, { ColumnsType } from 'antd/es/table'
-import React, { useEffect } from 'react'
-import { isMobile } from 'react-device-detect'
+import { Table, Tag, Typography } from 'antd'
+import { ColumnsType } from 'antd/es/table'
+import React from 'react'
 import { productList } from '~/helper/fake-api'
-import { IProductList } from '~/interface'
+import { IColor, IProductList } from '~/interface'
 import { cn } from '~/lib/utils'
 
 interface ProductListProps extends React.HTMLAttributes<HTMLElement> {}
@@ -19,7 +18,7 @@ const columns: ColumnsType<IProductList> = [
     title: 'Màu',
     dataIndex: 'colors',
     key: 'colors',
-    render: (_, { colors }) => (
+    render: (colors: IColor[]) => (
       <>
         {colors.map((color) => {
           return (
@@ -45,29 +44,33 @@ const columns: ColumnsType<IProductList> = [
   {
     title: 'Ngày nhập NPL',
     key: 'dateInputNPL',
-    dataIndex: 'dateInputNPL'
+    dataIndex: 'dateInputNPL',
+    responsive: ['md']
   },
   {
     title: 'Ngày xuất FCR',
     key: 'dateOutputFCR',
-    dataIndex: 'dateOutputFCR'
+    dataIndex: 'dateOutputFCR',
+    responsive: ['md']
   },
   {
     title: 'Nơi in / thêu',
     key: 'placePrintIn',
-    dataIndex: 'placePrintIn'
+    dataIndex: 'placePrintIn',
+    responsive: ['md']
   }
 ]
 
 // eslint-disable-next-line no-empty-pattern
 function ProductList(props: ProductListProps) {
-  useEffect(() => {
-    console.log(isMobile)
-  }, [])
-
   return (
     <div {...props} className={cn('', props.className)}>
-      <Table columns={columns} dataSource={productList} />
+      <Table
+        columns={columns}
+        dataSource={productList.map((item) => {
+          return { ...item, key: item.productID }
+        })}
+      />
     </div>
   )
 }
