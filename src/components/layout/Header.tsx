@@ -57,9 +57,9 @@ const Header = ({ onMenuClick }: HeaderProps) => {
       >
         <UserDialog
           avatar={url}
-          firstName={'Justin'}
-          lastName={'Bieber'}
+          fullName={'Nguyễn Hữu Hậu'}
           email={'huuhau.hh47@gmail.com'}
+          phone={'012345678'}
           position={'IT'}
           gender={false}
         />
