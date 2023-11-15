@@ -2,7 +2,9 @@
 import type { ThemeConfig } from 'antd'
 
 const themeConfig: ThemeConfig = {
-  token: {},
+  token: {
+    colorPrimary: '#ff6b00'
+  },
   components: {
     Layout: {
       siderBg: '#ffffff',

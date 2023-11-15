@@ -1,5 +1,6 @@
-import { Button, ConfigProvider, Drawer, Layout } from 'antd'
+import { ConfigProvider, Drawer, Layout } from 'antd'
 import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import themeConfig from '~/theme/antd-theme.config'
 import Footer from './Footer'
 import Header from './Header'
@@ -68,19 +69,7 @@ const Main: React.FC = () => {
             />
           </AntHeader>
           <Content className=''>
-            <div style={{ padding: 24, textAlign: 'center' }}>
-              <p>long content</p>
-              <Button type='text'>Hello</Button>
-              {
-                // indicates very long content
-                Array.from({ length: 100 }, (_, index) => (
-                  <React.Fragment key={index}>
-                    {index % 20 === 0 && index ? 'more' : '...'}
-                    <br />
-                  </React.Fragment>
-                ))
-              }
-            </div>
+            <Outlet />
           </Content>
           <Footer className=''>Ant Design ©2023 Created by Ant UED</Footer>
         </Layout>
