@@ -5,7 +5,6 @@ import themeConfig from '~/theme/antd-theme.config'
 import Footer from './Footer'
 import Header from './Header'
 import SideNav from './SideNav'
-import routes from '~/constants/route'
 
 const { Sider, Header: AntHeader, Content } = Layout
 
@@ -13,7 +12,6 @@ const Main: React.FC = () => {
   const [breakpoint, setBreakpoint] = useState(false)
   const [openDrawer, setOpenDrawer] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
-  const [keys, setkeys] = useState<string[]>([`${routes[0].key}`])
 
   return (
     <ConfigProvider theme={themeConfig}>
@@ -35,7 +33,7 @@ const Main: React.FC = () => {
             }}
           >
             <Sider trigger={null} className=''>
-              <SideNav keys={keys} setKeys={setkeys} />
+              <SideNav />
             </Sider>
           </Layout>
         </Drawer>
@@ -52,7 +50,7 @@ const Main: React.FC = () => {
           width={250}
           className=''
         >
-          <SideNav keys={keys} setKeys={setkeys} />
+          <SideNav />
         </Sider>
         <Layout className=''>
           <AntHeader className='h-fit p-0'>

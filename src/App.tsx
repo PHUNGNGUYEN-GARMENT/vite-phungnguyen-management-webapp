@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Main from './components/layout/Main'
 import routes from './constants/route'
 import SignIn from './pages/auth/SignIn'
@@ -11,6 +11,7 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route element={<Main />}>
+          <Route path='/' element={<Navigate to='dashboard' replace />} />
           {routes.map((route) => {
             return (
               <Route key={route.key} path={route.path} element={<route.component />}>

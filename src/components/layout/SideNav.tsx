@@ -1,16 +1,11 @@
-// import { useState } from "react";
 import { Menu, MenuProps } from 'antd'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-// import { useLocation } from 'react-router-dom'
 import logo from '~/assets/logo.svg'
 import routes from '~/constants/route'
 import { cn } from '~/lib/utils'
 
-interface SideNavProps extends React.HTMLAttributes<HTMLElement> {
-  keys: string[]
-  setKeys: (keys: string[]) => void
-}
+interface SideNavProps extends React.HTMLAttributes<HTMLElement> {}
 
 type MenuItem = Required<MenuProps>['items'][number]
 
@@ -27,14 +22,6 @@ function getItem(
     label
   } as MenuItem
 }
-
-// const items: MenuItem[] = [
-//   getItem('Option 1', '1', <PieChartOutlined />),
-//   getItem('Option 2', '2', <DesktopOutlined />),
-//   getItem('User', 'sub1', <UserOutlined />, [getItem('Tom', '3'), getItem('Bill', '4'), getItem('Alex', '5')]),
-//   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-//   getItem('Files', '9', <FileOutlined />)
-// ]
 
 const SideItem = (path: string, name: string) => {
   return (
@@ -58,40 +45,40 @@ const items: MenuItem[] = routes.map((route) => {
 })
 
 // eslint-disable-next-line no-empty-pattern
-const SideNav = ({ keys, setKeys }: SideNavProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const SideNav = ({}: SideNavProps) => {
   const { pathname } = useLocation()
-  // const {
-  //   token: { colorBgContainer }
-  // } = theme.useToken()
+  const [keys, setKeys] = useState<string>(pathname)
 
-  // useEffect(() => {
-  //   console.log(keys)
-  // }, [keys])
+  useEffect(() => {
+    setKeys(pathname)
+  }, [])
+
+  const getSubKeysFromPath = (path: string): string[] => {
+    for (const route of routes) {
+      if (route.childs) {
+        for (const child of route.childs) {
+          if (child.path === path) {
+            return [`${route.key}`]
+          }
+        }
+      }
+    }
+    return ['']
+  }
 
   return (
     <div className={cn('bg-white')}>
-      <div className='relative flex justify-center py-5'>
+      <Link onClick={() => setKeys(routes[0].path)} to={routes[0].path} className='relative flex justify-center py-5'>
         <img src={logo} alt='logo' className='h-10 w-10 object-contain lg:h-20 lg:w-20' />
-      </div>
-      {/* <Menu>
-        {routes.map((route) => {
-          // const isActive = pathname === route.path
-          return (
-            <Menu.Item key={route.key} className='' icon={<route.icon size={20} className={cn('bg-primary')} />}>
-              <Link to={route.path} className=''>
-                <span>{route.name}</span>
-              </Link>
-            </Menu.Item>
-          )
-        })}
-      </Menu> */}
+      </Link>
       <Menu
         mode='inline'
-        defaultSelectedKeys={['2']}
-        defaultOpenKeys={['sub1']}
-        // defaultSelectedKeys={keys}
-        onSelect={(info) => setKeys(info.selectedKeys)}
+        // defaultSelectedKeys={[pathname]}
+        defaultOpenKeys={getSubKeysFromPath(pathname)}
+        selectedKeys={[keys]}
+        activeKey={keys}
+        selectable
+        onSelect={(info) => setKeys(info.selectedKeys[0])}
         style={{ height: '100%', borderRight: 0 }}
         items={items}
       />
