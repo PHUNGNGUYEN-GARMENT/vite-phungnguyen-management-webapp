@@ -5,6 +5,7 @@ import themeConfig from '~/theme/antd-theme.config'
 import Footer from './Footer'
 import Header from './Header'
 import SideNav from './SideNav'
+import SideNavMobile from './SideNavMobile'
 
 const { Sider, Header: AntHeader, Content } = Layout
 
@@ -33,7 +34,8 @@ const Main: React.FC = () => {
             }}
           >
             <Sider trigger={null} className=''>
-              <SideNav />
+              <SideNav className='hidden md:block' onSelectedItem={() => setOpenDrawer(false)} />
+              <SideNavMobile className='block md:hidden' onSelectedItem={() => setOpenDrawer(false)} />
             </Sider>
           </Layout>
         </Drawer>
@@ -50,7 +52,8 @@ const Main: React.FC = () => {
           width={250}
           className=''
         >
-          <SideNav />
+          <SideNav className='hidden md:block' />
+          <SideNavMobile className='md:hidden' />
         </Sider>
         <Layout className=''>
           <AntHeader className='h-fit p-0'>
@@ -58,10 +61,8 @@ const Main: React.FC = () => {
               collapsed={collapsed}
               onMenuClick={() => {
                 if (breakpoint) {
-                  console.log('Breakpoint enabled')
                   setOpenDrawer(true)
                 } else {
-                  console.log('Breakpoint disabled')
                   setCollapsed(!collapsed)
                 }
               }}

@@ -1,7 +1,7 @@
 import { Input, Modal } from 'antd'
 import { SearchIcon } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import routes from '~/constants/route'
+import { routes } from '~/constants/route.constant'
 import { cn } from '~/lib/utils'
 import SearchItem from './SearchItem'
 
