@@ -24,16 +24,10 @@ const Main: React.FC = () => {
           onClose={() => setOpenDrawer(false)}
           open={openDrawer}
           width={250}
+          className='m-0 p-0'
         >
-          <Layout
-            className='w-full'
-            style={{
-              width: '100%',
-              padding: '0px',
-              margin: '0px'
-            }}
-          >
-            <Sider trigger={null} className=''>
+          <Layout>
+            <Sider trigger={null}>
               <SideNav className='hidden md:block' onSelectedItem={() => setOpenDrawer(false)} />
               <SideNavMobile className='block md:hidden' onSelectedItem={() => setOpenDrawer(false)} />
             </Sider>
@@ -50,7 +44,6 @@ const Main: React.FC = () => {
           collapsed={collapsed}
           trigger={null}
           width={250}
-          className=''
         >
           <SideNav className='hidden md:block' />
           <SideNavMobile className='md:hidden' />

@@ -9,7 +9,7 @@ import useBreakpoint from './hooks/useBreakpoint'
 function App() {
   const { breakpoint } = useBreakpoint()
 
-  const isMobile: boolean = breakpoint === 'md'
+  const renderRoutes = breakpoint === 'md' || breakpoint === 'sm' ? routesMobile : routes
 
   return (
     <>
@@ -19,7 +19,7 @@ function App() {
           <Route path='/sign-in' element={<SignIn />} />
           <Route element={<Main />}>
             <Route path='/' element={<Navigate to='dashboard' replace />} />
-            {(isMobile ? routesMobile : routes).map((route) => {
+            {renderRoutes.map((route) => {
               return (
                 <Route key={route.key} path={route.path} element={<route.component />}>
                   {route.childs

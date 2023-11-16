@@ -28,50 +28,50 @@ import Sewing from '~/pages/Sewing'
 export const routes = [
   { key: '/dashboard', path: '/dashboard', name: 'Tổng quan', component: Dashboard, icon: LayoutDashboard },
   {
-    key: '/product-info',
-    path: '/product-info',
-    name: 'Thông tin mã hàng',
+    key: '/product',
+    path: '/product',
+    name: 'Mã hàng',
     component: Outlet,
     icon: PackageSearch,
     childs: [
       {
-        key: '/product-info/product-list',
-        path: '/product-info/product-list',
+        key: '/product/product-list',
+        path: '/product/product-list',
         name: 'Danh sách mã hàng',
         component: ProductList,
         icon: ClipboardList
       },
       {
-        key: '/product-info/importation',
-        path: '/product-info/importation',
+        key: '/product/importation',
+        path: '/product/importation',
         name: 'Nhập khẩu',
         component: Importation,
         icon: Import
       },
       {
-        key: '/product-info/sewings',
-        path: '/product-info/sewings',
+        key: '/product/sewings',
+        path: '/product/sewings',
         name: 'May mẫu',
         component: Sewing,
         icon: Aperture
       },
       {
-        key: '/product-info/accessories',
-        path: '/product-info/accessories',
+        key: '/product/accessories',
+        path: '/product/accessories',
         name: 'Phụ liệu',
         component: Accessory,
         icon: PersonStanding
       },
       {
-        key: '/product-info/cutting',
-        path: '/product-info/cutting',
+        key: '/product/cutting',
+        path: '/product/cutting',
         name: 'Tổ cắt',
         component: CuttingGroup,
         icon: Scissors
       },
       {
-        key: '/product-info/embroidered-delivery',
-        path: '/product-info/embroidered-delivery',
+        key: '/product/embroidered-delivery',
+        path: '/product/embroidered-delivery',
         name: 'Chuyền may',
         component: EmbroideredDelivery,
         icon: Import
@@ -93,50 +93,50 @@ export const routes = [
 export const routesMobile = [
   { key: '/dashboard', path: '/dashboard', name: 'Tổng quan', component: Dashboard, icon: LayoutDashboard },
   {
-    key: '/product-info',
-    path: '/product-info',
-    name: 'Thông tin mã hàng',
+    key: '/product',
+    path: '/product',
+    name: 'Mã hàng',
     component: Outlet,
     icon: PackageSearch,
     childs: [
       {
-        key: '/product-info/product-list',
-        path: '/product-info/product-list',
+        key: '/product/product-list',
+        path: '/product/product-list',
         name: 'Danh sách mã hàng',
         component: ProductList,
         icon: ClipboardList
       },
       {
-        key: '/product-info/in-out',
-        path: '/product-info/in-out',
+        key: '/product/in-out',
+        path: '/product/in-out',
         name: 'Nhập - xuất',
         component: InOutPutDate,
         icon: ClipboardList
       },
       {
-        key: '/product-info/sewings',
-        path: '/product-info/sewings',
+        key: '/product/sewings',
+        path: '/product/sewings',
         name: 'May mẫu',
         component: Sewing,
         icon: Aperture
       },
       {
-        key: '/product-info/accessories',
-        path: '/product-info/accessories',
+        key: '/product/accessories',
+        path: '/product/accessories',
         name: 'Phụ liệu',
         component: Accessory,
         icon: PersonStanding
       },
       {
-        key: '/product-info/cutting',
-        path: '/product-info/cutting',
+        key: '/product/cutting',
+        path: '/product/cutting',
         name: 'Tổ cắt',
         component: CuttingGroup,
         icon: Scissors
       },
       {
-        key: '/product-info/embroidered-delivery',
-        path: '/product-info/embroidered-delivery',
+        key: '/product/embroidered-delivery',
+        path: '/product/embroidered-delivery',
         name: 'Chuyền may',
         component: EmbroideredDelivery,
         icon: Import
