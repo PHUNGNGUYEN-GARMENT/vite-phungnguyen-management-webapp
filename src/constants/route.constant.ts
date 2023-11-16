@@ -19,7 +19,7 @@ import Dashboard from '~/pages/Dashboard'
 import EmbroideredDelivery from '~/pages/EmbroideredDelivery'
 import Group from '~/pages/Group'
 import Importation from '~/pages/Imnportation'
-import InOutPutDate from '~/pages/InOutPutDate'
+import InOutputDate from '~/pages/InOutputDate'
 import Notion from '~/pages/Notion'
 import PrintIn from '~/pages/PrintIn'
 import ProductList from '~/pages/ProductList'
@@ -110,7 +110,7 @@ export const routesMobile = [
         key: '/product/in-out',
         path: '/product/in-out',
         name: 'Nhập - xuất',
-        component: InOutPutDate,
+        component: InOutputDate,
         icon: ClipboardList
       },
       {
